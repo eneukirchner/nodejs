@@ -1,14 +1,14 @@
 var gpio = require("gpio");
-var gpio47, intervalTimer;
+var gpio4, intervalTimer;
 
 console.log("Hallo");
 
 // Flashing lights if LED connected to GPIO4
-gpio47 = gpio.export(47, {
+gpio4 = gpio.export(4, {
    ready: function() {
       intervalTimer = setInterval(function() {
-         gpio47.set();
-         setTimeout(function() { gpio47.reset(); }, 500);
+         gpio4.set();
+         setTimeout(function() { gpio4.reset(); }, 500);
       }, 1000);
    }
 });
@@ -17,8 +17,8 @@ gpio47 = gpio.export(47, {
 setTimeout(function() {
    clearInterval(intervalTimer);          // stops the voltage cycling
 
-   gpio47.reset();
-   gpio47.unexport(function() {
+   gpio4.reset();
+   gpio4.unexport(function() {
       // unexport takes a callback which gets fired as soon as unexporting is done
 	
       console.log("Fertig");
